@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Product - Omkar Antiques</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="logo"><img src="images/logo.jpg" alt="Omkar Antiques"></div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="admin.html">Admin</a>
+      <a href="cart.html">Cart (<span id="cart-count">0</span>)</a>
+    </nav>
+  </header>
+
+  <main class="product-detail">
+    <div class="img-wrap">
+      <img id="prod-img" src="images/no-img.jpg" alt="product image">
+    </div>
+    <div class="info">
+      <h1 id="prod-name"></h1>
+      <p id="prod-desc"></p>
+      <p class="price" id="prod-price"></p>
+      <p>Stock: <span id="prod-stock"></span></p>
+      <label>Quantity: <input type="number" id="qty" value="1" min="1"></label>
+      <button id="add-cart" class="btn">Add to Cart</button>
+      <button id="buy-now" class="btn">Buy Now</button>
+    </div>
+  </main>
+
+  <script type="module" src="product.js"></script>
+</body>
+</html>

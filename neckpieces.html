@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neckpieces - Omkar Antiques</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="logo"><a href="index.html"><img src="images/logo.png" alt="Omkar Antiques Logo"></a></div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="earrings.html">Earrings</a>
+    <a href="neckpieces.html" class="active">Neckpieces</a>
+    <a href="index.html#contact">Contact</a>
+  </nav>
+</header>
+
+<section class="products">
+  <h2>Neckpieces Collection</h2>
+  <div class="product-grid">
+    <div class="product"><img src="images/green-nagapadam.jpg" alt="Green Nagapadam" onclick="openModal('images/green-nagapadam.jpg','Green Nagapadam',799)"><h3>Green Nagapadam</h3><p>₹799</p><button class="btn" onclick="payNow('Green Nagapadam', 799)">Buy Now</button></div>
+    <div class="product"><img src="images/temple-haram.jpg" alt="Temple Haram" onclick="openModal('images/temple-haram.jpg','Temple Haram',1199)"><h3>Temple Haram</h3><p>₹1199</p><button class="btn" onclick="payNow('Temple Haram', 1199)">Buy Now</button></div>
+    <div class="product"><img src="images/paalakka-floral.jpg" alt="Paalakka Floral" onclick="openModal('images/paalakka-floral.jpg','Paalakka Floral',699)"><h3>Paalakka Floral</h3><p>₹699</p><button class="btn" onclick="payNow('Paalakka Floral', 699)">Buy Now</button></div>
+    <div class="product"><img src="images/chocker-paalakka.jpg" alt="Chocker Paalakka" onclick="openModal('images/chocker-paalakka.jpg','Chocker Paalakka',649)"><h3>Chocker Paalakka</h3><p>₹649</p><button class="btn" onclick="payNow('Chocker Paalakka', 649)">Buy Now</button></div>
+    <div class="product"><img src="images/ruby-beaded-neckpiece.jpg" alt="Ruby Beaded Neckpiece" onclick="openModal('images/ruby-beaded-neckpiece.jpg','Ruby Beaded Neckpiece',899)"><h3>Ruby Beaded Neckpiece</h3><p>₹899</p><button class="btn" onclick="payNow('Ruby Beaded Neckpiece', 899)">Buy Now</button></div>
+    <div class="product"><img src="images/bridal-neckpiece.jpg" alt="Bridal Neckpiece" onclick="openModal('images/bridal-neckpiece.jpg','Bridal Neckpiece',1499)"><h3>Bridal Neckpiece</h3><p>₹1499</p><button class="btn" onclick="payNow('Bridal Neckpiece', 1499)">Buy Now</button></div>
+    <div class="product"><img src="images/simple-paalakka.jpg" alt="Simple Paalakka" onclick="openModal('images/simple-paalakka.jpg','Simple Paalakka',499)"><h3>Simple Paalakka</h3><p>₹499</p><button class="btn" onclick="payNow('Simple Paalakka', 499)">Buy Now</button></div>
+    <div class="product"><img src="images/simple-elephant-chocker.jpg" alt="Simple Elephant Chocker" onclick="openModal('images/simple-elephant-chocker.jpg','Simple Elephant Chocker',349)"><h3>Simple Elephant Chocker</h3><p>₹349</p><button class="btn" onclick="payNow('Simple Elephant Chocker', 349)">Buy Now</button></div>
+    <div class="product"><img src="images/semi-bridal-neckpiece.jpg" alt="Semi Bridal Neckpiece" onclick="openModal('images/semi-bridal-neckpiece.jpg','Semi Bridal Neckpiece',999)"><h3>Semi Bridal Neckpiece</h3><p>₹999</p><button class="btn" onclick="payNow('Semi Bridal Neckpiece', 999)">Buy Now</button></div>
+    <div class="product"><img src="images/lotus-chocker-blue.jpg" alt="Lotus Chocker Blue" onclick="openModal('images/lotus-chocker-blue.jpg','Lotus Chocker Blue',749)"><h3>Lotus Chocker Blue</h3><p>₹749</p><button class="btn" onclick="payNow('Lotus Chocker Blue', 749)">Buy Now</button></div>
+  </div>
+</section>
+
+<!-- Modal for large view -->
+<div id="imageModal" class="modal">
+  <span class="close" onclick="closeModal()">&times;</span>
+  <img class="modal-content" id="modalImg">
+  <div id="caption"></div>
+  <button id="buyBtn" class="btn"></button>
+</div>
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+  const shippingCharge = 50;
+
+  function payNow(productName, amount) {
+    let total = (amount + shippingCharge) * 100;
+    var options = {
+      "key": "rzp_test_RFZApzCq7MpmoK",
+      "amount": total,
+      "currency": "INR",
+      "name": "Omkar Antiques",
+      "description": productName + " (incl. shipping)",
+      "image": "images/logo.png",
+      "handler": function (response){
+          window.location.href = "thankyou.html";
+      },
+      "theme": {"color": "#C19A6B"}
+    };
+    var rzp1 = new Razorpay(options);
+    rzp1.open();
+  }
+
+  function openModal(imgSrc, title, price){
+    document.getElementById("imageModal").style.display="block";
+    document.getElementById("modalImg").src = imgSrc;
+    document.getElementById("caption").innerHTML = title + " - ₹" + price + " (+₹" + shippingCharge + " shipping)";
+    let btn = document.getElementById("buyBtn");
+    btn.innerText = "Buy Now";
+    btn.onclick = function(){ payNow(title, price); };
+  }
+  function closeModal(){
+    document.getElementById("imageModal").style.display="none";
+  }
+</script>
+
+</body>
+</html>

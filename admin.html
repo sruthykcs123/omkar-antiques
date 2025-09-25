@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Admin - Omkar Antiques</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div class="logo"><img src="images/logo.jpg" alt="Omkar Antiques"></div>
+  <nav><a href="index.html">Home</a></nav>
+</header>
+
+<main class="admin-page">
+  <h1>Admin Panel</h1>
+
+  <section id="auth-section">
+    <h2>Login</h2>
+    <input id="email" placeholder="Email">
+    <input id="password" type="password" placeholder="Password">
+    <button id="login-btn" class="btn">Login</button>
+    <button id="logout-btn" class="btn" style="display:none">Logout</button>
+  </section>
+
+  <section id="product-section" style="display:none;">
+    <h2>Add / Edit Product</h2>
+    <input id="p-name" placeholder="Product name">
+    <textarea id="p-desc" placeholder="Description"></textarea>
+    <input id="p-price" type="number" placeholder="Price (INR)">
+    <input id="p-stock" type="number" placeholder="Stock">
+    <input id="p-image" type="file" accept="image/*">
+    <button id="save-product" class="btn">Save Product</button>
+
+    <h3>Your Products</h3>
+    <div id="admin-products"></div>
+  </section>
+</main>
+
+<script type="module" src="admin.js"></script>
+</body>
+</html>
